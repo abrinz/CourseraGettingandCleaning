@@ -56,6 +56,6 @@ colnames(trainingX) <- features[,2]
 onlyMeanSTD <- cbind(onlyMeanSTD,final$Subject,final$Activity_Labels)
 colnames(onlyMeanSTD)[colnames(onlyMeanSTD)=="final$Subject"] <- "Subject"
 colnames(onlyMeanSTD)[colnames(onlyMeanSTD)=="final$Activity_Labels"] <- "Activity_Labels"
-onlyMeanSTD %>% group_by(Activity_Labels,Subject) %>% summarise_all(mean)
-write.table(onlyMeanSTD,file = "./run_analysis.txt",row.names = FALSE)
+tidy_data <- onlyMeanSTD %>% group_by(Activity_Labels,Subject) %>% summarise_all(mean)
+write.table(tidy_data,file = "./run_analysis.txt",row.names = FALSE)
 
